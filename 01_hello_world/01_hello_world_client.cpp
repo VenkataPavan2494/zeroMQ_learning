@@ -10,6 +10,14 @@
 // The main program
 int main(int argc, char ** argv) {
 
+  // Try to print the ZMQ version..
+  // The version information is a tuple..
+  std::tuple<int, int, int> zmq_version_info {zmq::version()};
+
+  std::cout << "The ZMQ version:" << std::get<0>(zmq_version_info) << "."
+                                  << std::get<1>(zmq_version_info) << "."
+                                  << std::get<2>(zmq_version_info) << std::endl;
+
   // Importantly we need to create a context for the communication between
   // two entities: server and client.
   // The following is the Client Hello World context.
