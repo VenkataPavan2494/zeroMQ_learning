@@ -74,9 +74,16 @@ int main(int argc, char ** argv) {
     // reset the contents of the message..
     std::memset(msg_to_send.data(), '\0', 10);
 
+    // Copy the workload into into the message..
+    std::snprintf((char *)msg_to_send.data(), msg_to_send.size(), "%d", \
+                                                                    work_load);
 
-
+    sender.send(msg_to_send);
   }
+
+  std::cout << "Total expected cost: " << total_msec << std::endl;
+
+  sleep(1);   // Give zmq time to deliver..
 
   return 0;
 }
