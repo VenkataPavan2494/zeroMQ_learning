@@ -21,7 +21,7 @@ int main(int argc, char ** argv) {
   zmq::context_t context {1};
 
   // Socket to send messages on.. for a given context. The messages are sent to
-  // the workers through this socket.
+  // the workers through this socket. This is going to be of type PUSH.
   zmq::socket_t sender {context, ZMQ_PUSH};
 
   // Bind the socket to an address.
